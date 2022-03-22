@@ -17,9 +17,10 @@ mainCharIMG = pygame.image.load('images/heroFace1.png')
 
 movingRight = False
 movingLeft = False
+
 playerLoc = [50, 50]
 playerYMom = 0
-playerRect = pygame.rect(playerLoc[0], playerLoc[1], mainCharIMG.get_width(), mainCharIMG.get_height())
+
 
 while True:
 
@@ -37,9 +38,6 @@ while True:
     else:
         playerYMom += 0.2
     playerLoc[1] += playerYMom
-
-    playerRect.x = playerLoc[0]
-    playerRect.y = playerLoc[1]
 
     for event in pygame.event.get():
         if event.type == QUIT:
