@@ -17,7 +17,6 @@ mainCharIMG = pygame.image.load('images/heroFace1.png')
 
 movingRight = False
 movingLeft = False
-
 playerLoc = [50, 50]
 playerYMom = 0
 
