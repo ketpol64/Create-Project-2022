@@ -20,7 +20,7 @@ movingLeft = False
 playerLoc = [50, 50]
 playerYMom = 0
 playerHB = Rect(playerLoc[0], playerLoc[1], mainCharIMG.get_width(), mainCharIMG.get_height())
-
+p1 = Rect(500, 500, 350, 100)
 while True:
 
     screen.fill((52, 174, 235))
@@ -40,6 +40,11 @@ while True:
 
     playerHB.x = playerLoc[0]
     playerHB.y = playerLoc[1]
+
+    if playerHB.colliderect(p1):
+        pygame.draw.rect(screen, (255, 0, 0), p1)
+    else:
+        pygame.draw.rect(screen, (0, 255, 0), p1)
 
     for event in pygame.event.get():
         if event.type == QUIT:
