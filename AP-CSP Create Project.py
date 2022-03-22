@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame,sys
 
 clock = pygame.time.Clock()
 
