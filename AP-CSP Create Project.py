@@ -19,9 +19,6 @@ movingLeft = False
 
 while True:
 
-    screen.blit(swordIMG, (550, 350))
-    screen.blit(evilFaceIMG, (100, 100))
-
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
