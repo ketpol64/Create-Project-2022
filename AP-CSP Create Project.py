@@ -11,13 +11,32 @@ windowSize = (1100, 700)
 
 screen = pygame.display.set_mode(windowSize, 0, 32)
 
-swordIMG = pygame.image.load('sword2.png')
-evilFaceIMG = pygame.image.load('evilFace1.png')
+swordIMG = pygame.image.load('images/sword2.png')
+evilFaceIMG = pygame.image.load('images/evilFace1.png')
+mainCharIMG = pygame.image.load('images/heroFace1.png')
 
 movingRight = False
 movingLeft = False
 
+playerLoc = [50, 50]
+playerYMom = 0
+
 while True:
+
+    screen.fill((52, 174, 235))
+
+    screen.blit(mainCharIMG, playerLoc)
+
+    if movingRight:
+        playerLoc[0] += 10
+    if movingLeft:
+        playerLoc[0] -= 10
+
+    if playerLoc[1] > windowSize[1]-mainCharIMG.get_height():
+        playerYMom = -playerYMom
+    else:
+        playerYMom += 0.2
+    playerLoc[1] += playerYMom
 
     for event in pygame.event.get():
         if event.type == QUIT:
