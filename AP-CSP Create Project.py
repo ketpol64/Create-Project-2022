@@ -19,7 +19,7 @@ movingRight = False
 movingLeft = False
 playerLoc = [50, 50]
 playerYMom = 0
-
+playerHB = Rect(playerLoc[0], playerLoc[1], mainCharIMG.get_width(), mainCharIMG.get_height())
 
 while True:
 
@@ -37,6 +37,9 @@ while True:
     else:
         playerYMom += 0.2
     playerLoc[1] += playerYMom
+
+    playerHB.x = playerLoc[0]
+    playerHB.y = playerLoc[1]
 
     for event in pygame.event.get():
         if event.type == QUIT:
