@@ -11,8 +11,6 @@ windowSize = (1100, 700)
 
 screen = pygame.display.set_mode(windowSize, 0, 32)
 
-swordIMG = pygame.image.load('images/sword2.png')
-evilFaceIMG = pygame.image.load('images/evilFace1.png')
 mainCharIMG = pygame.image.load('images/heroFace1.png')
 
 movingRight = False
@@ -20,7 +18,7 @@ movingLeft = False
 playerLoc = [50, 50]
 playerYMom = 0
 playerHB = Rect(playerLoc[0], playerLoc[1], mainCharIMG.get_width(), mainCharIMG.get_height())
-p1 = Rect(500, 500, 350, 100)
+
 while True:
 
     screen.fill((52, 174, 235))
@@ -31,20 +29,12 @@ while True:
         playerLoc[0] += 10
     if movingLeft:
         playerLoc[0] -= 10
-
-    if playerLoc[1] > windowSize[1]-mainCharIMG.get_height():
-        playerYMom = -playerYMom
-    else:
-        playerYMom += 0.2
+    
+    playerYMom += 0.2
     playerLoc[1] += playerYMom
 
     playerHB.x = playerLoc[0]
     playerHB.y = playerLoc[1]
-
-    if playerHB.colliderect(p1):
-        pygame.draw.rect(screen, (255, 0, 0), p1)
-    else:
-        pygame.draw.rect(screen, (0, 255, 0), p1)
 
     for event in pygame.event.get():
         if event.type == QUIT:
