@@ -3,10 +3,10 @@ import pygame, sys, time, random
 from pygame.locals import *
 pygame.init()
 pygame.display.set_caption('game base')
-screen = pygame.display.set_mode((900, 900),0,32)
-display = pygame.Surface((300, 300))
+screen = pygame.display.set_mode((1100, 700),0,32)
+display = pygame.Surface((550, 350))
 
-grass_img = pygame.image.load('grass.png').convert()
+grass_img = pygame.image.load('images/grass.png').convert()
 grass_img.set_colorkey((0, 0, 0))
 
 f = open('map.txt')
@@ -21,8 +21,6 @@ while True:
             if tile:
                 #pygame.draw.rect(display, (255, 255, 255), pygame.Rect(x * 10, y * 10, 10, 10), 1)
                 display.blit(grass_img, (150 + x * 10 - y * 10, 100 + x * 5 + y * 5))
-                if random.randint(0, 1):
-                    display.blit(grass_img, (150 + x * 10 - y * 10, 100 + x * 5 + y * 5 - 14))
 
     for event in pygame.event.get():
         if event.type == QUIT:
