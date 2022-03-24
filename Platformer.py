@@ -32,10 +32,10 @@ def load_map(path):
 
 game_map = load_map('map')
 
-grass_img = pygame.image.load('grass.png')
-dirt_img = pygame.image.load('dirt.png')
+grass_img = pygame.image.load('images/grass.png')
+dirt_img = pygame.image.load('images/dirt.png')
 
-player_img = pygame.image.load('player.png').convert()
+player_img = pygame.image.load('images/player.png').convert()
 player_img.set_colorkey((255,255,255))
 
 player_rect = pygame.Rect(100,100,5,13)
