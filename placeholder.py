@@ -15,8 +15,8 @@ display = pygame.Surface((550,350))
 
 movingRight = False
 movingLeft = False
-movingForward = False
-movingBack = False
+verticalMom = 0
+airTime = 0
 
 trueScroll = [0,0]
 
@@ -64,16 +64,44 @@ currentPlayerAction = 'idle'
 playerFrame = 0
 playerFlip = False
 
-gameMap = loadMap('maps/map')
+gameMap = loadMap('maps/map1')
 
-grassImg = pygame.image.load('images/isoGrass1.png')
-grassImg.set_colorkey((0, 0, 0))
+grassImg = pygame.image.load('images/grass1.png')
 dirtImg = pygame.image.load('images/dirt1.png')
 tileSize = grassImg.get_width()
 
-playerHB = pygame.Rect(0,300,25,50)
+playerHB = pygame.Rect(50,50,25,50)
 
 backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
+
+def collisionTest(rect,tiles):
+    hitList = []
+    for tile in tiles:
+        if rect.colliderect(tile):
+            hitList.append(tile)
+    return hitList
+
+def move(rect,movement,tiles):
+    collisionTypes = {'top':False,'bottom':False,'right':False,'left':False}
+    rect.x += movement[0]
+    hitList = collisionTest(rect,tiles)
+    for tile in hitList:
+        if movement[0] > 0:
+            rect.right = tile.left
+            collisionTypes['right'] = True
+        elif movement[0] < 0:
+            rect.left = tile.right
+            collisionTypes['left'] = True
+    rect.y += movement[1]
+    hitList = collisionTest(rect,tiles)
+    for tile in hitList:
+        if movement[1] > 0:
+            rect.bottom = tile.top
+            collisionTypes['bottom'] = True
+        elif movement[1] < 0:
+            rect.top = tile.bottom
+            collisionTypes['top'] = True
+    return rect, collisionTypes
 
 while True:
     display.fill((146,244,255))
@@ -91,27 +119,30 @@ while True:
             pygame.draw.rect(display,(14,222,150),objRect)
         else:
             pygame.draw.rect(display,(9,91,85),objRect)
-    
+
+    tileRects = []
     y = 0
     for layer in gameMap:
         x = 0
         for tile in layer:
             if tile == '1':
-                display.blit(grassImg,((x * 10 - y * 10)-scroll[0], (x * 5 + y * 5)-scroll[1]))
+                display.blit(grassImg,(x*tileSize-scroll[0],y*tileSize-scroll[1]))
+            if tile == '2':
+                display.blit(dirtImg,(x*tileSize-scroll[0],y*tileSize-scroll[1]))
+            if tile != '0':
+                tileRects.append(pygame.Rect(x*tileSize,y*tileSize,tileSize,tileSize))
             x += 1
         y += 1
 
     playerMovement = [0,0]
     if movingRight:
         playerMovement[0] += 3
-        playerHB[0] += 3
     if movingLeft:
         playerMovement[0] -= 3
-        playerHB[0] -= 3
-    if movingForward:
-        playerHB[1] -= 3
-    if movingBack:
-        playerHB[1] += 3
+    playerMovement[1] += verticalMom
+    verticalMom += 0.2
+    if verticalMom > 3:
+        verticalMom = 3
 
     if playerMovement[0] > 0:
         currentPlayerAction,playerFrame = changeAction(currentPlayerAction,playerFrame,'running')
@@ -121,6 +152,16 @@ while True:
     if playerMovement[0] < 0:
         currentPlayerAction,playerFrame = changeAction(currentPlayerAction,playerFrame,'running')
         playerFlip = True
+
+    playerHB,collisions = move(playerHB,playerMovement,tileRects)
+
+    if collisions['bottom']:
+        airTime = 0
+        verticalMom = 0
+    else:
+        airTime += 1
+    if collisions['top']:
+        verticalMom = 0
     
     playerFrame += 1
     if playerFrame >= len(animationDatabase[currentPlayerAction]):
@@ -138,19 +179,14 @@ while True:
                 movingRight = True
             if event.key == K_a:
                 movingLeft = True
-            if event.key == K_w:
-                movingForward = True
-            if event.key == K_s:
-                movingBack = True
+            if event.key == K_SPACE:
+                if airTime < 20:
+                    verticalMom = -5
         if event.type == KEYUP:
             if event.key == K_d:
                 movingRight = False
             if event.key == K_a:
                 movingLeft = False
-            if event.key == K_w:
-                movingForward = False
-            if event.key == K_s:
-                movingBack = False
         
     windowBase.blit(pygame.transform.scale(display,windowSize),(0,0))
     pygame.display.update()
