@@ -70,7 +70,7 @@ grassImg = pygame.image.load('images/grass1.png')
 dirtImg = pygame.image.load('images/dirt1.png')
 tileSize = grassImg.get_width()
 
-playerHB = pygame.Rect(50,50,25,50)
+playerHB = pygame.Rect(50,50,17,36)
 
 backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
 

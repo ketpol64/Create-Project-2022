@@ -58,7 +58,7 @@ def changeAction(currentAction,frame,newAction):
 animationDatabase = {}
 
 animationDatabase['idle'] = loadAnimation('animations/player1/idle',[7,7,7,7])
-animationDatabase['running'] = loadAnimation('animations/player1/running',[5,7,5,7])
+animationDatabase['running'] = loadAnimation('animations/player1/running',[7,7,7,7])
 
 currentPlayerAction = 'idle'
 playerFrame = 0
@@ -71,14 +71,14 @@ grassImg.set_colorkey((0, 0, 0))
 dirtImg = pygame.image.load('images/dirt1.png')
 tileSize = grassImg.get_width()
 
-playerHB = pygame.Rect(0,300,25,50)
+playerHB = pygame.Rect(0,300,17,36)
 
 backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
 
 while True:
     display.fill((146,244,255))
 
-    trueScroll[0] += (playerHB.x-trueScroll[0]-152)/20
+    trueScroll[0] += (playerHB.x-trueScroll[0]-300)/20
     trueScroll[1] += (playerHB.y-trueScroll[1]-106)/20
     scroll = trueScroll.copy()
     scroll[0] = int(scroll[0])
