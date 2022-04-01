@@ -58,7 +58,7 @@ def changeAction(currentAction,frame,newAction):
 animationDatabase = {}
 
 animationDatabase['idle'] = loadAnimation('animations/player1/idle',[7,7,7,7])
-animationDatabase['running'] = loadAnimation('animations/player1/running',[7,7])
+animationDatabase['running'] = loadAnimation('animations/player1/running',[5,7,5,7])
 
 currentPlayerAction = 'idle'
 playerFrame = 0
