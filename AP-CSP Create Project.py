@@ -59,6 +59,7 @@ animationDatabase = {}
 
 animationDatabase['idle'] = loadAnimation('animations/player1/idle',[7,7,7,7])
 animationDatabase['running'] = loadAnimation('animations/player1/running',[7,7,7,7])
+animationDatabase['toScreen'] = loadAnimation('animations/player1/toScreen',[7,7,7,7])
 
 currentPlayerAction = 'idle'
 playerFrame = 0
@@ -71,7 +72,7 @@ grassImg.set_colorkey((0, 0, 0))
 dirtImg = pygame.image.load('images/dirt1.png')
 tileSize = grassImg.get_width()
 
-playerHB = pygame.Rect(0,300,17,36)
+playerHB = pygame.Rect(275,175,17,36)
 
 backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
 
@@ -113,6 +114,9 @@ while True:
     if movingBack:
         playerHB[1] += 3
 
+    if playerMovement[1] > 0:
+        currentPlayerAction,playerFrame = changeAction(currentPlayerAction,playerFrame,'toScreen')
+        playerFlip = False
     if playerMovement[0] > 0:
         currentPlayerAction,playerFrame = changeAction(currentPlayerAction,playerFrame,'running')
         playerFlip = False
