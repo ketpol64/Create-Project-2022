@@ -1,6 +1,7 @@
 from tkinter import font
 import pygame, sys
 from pygame.locals import *
+from random import randint
 pygame.init()
 pygame.display.set_caption('2022 AP-CSP Create Project: Isometric Dungeon Crawler')
 
@@ -9,7 +10,8 @@ gameFrameCount = pygame.time.Clock()
 windowSize = (1100,700)
 windowBase = pygame.display.set_mode(windowSize,0,32)
 
-font20 = pygame.font.SysFont(None,20)
+font100 = pygame.font.SysFont(None,100)
+font75 = pygame.font.SysFont(None,80)
 
 def drawText(text,font,color,surface,x,y):
     textObj = font.render(text,1,color)
@@ -100,15 +102,15 @@ def lOne(levelOne):
     grassImg = pygame.image.load('images/grass1.png')
     dirtImg = pygame.image.load('images/dirt1.png')
     tileSize = grassImg.get_width()
-    backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
+    backgroundObjects = [[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.5,[280,90,100,400]],[0.5,[450,80,120,400]]]
 
-    playerHB = pygame.Rect(200,50,17,36)
+    playerHB = pygame.Rect(200,160,17,36)
 
     while levelOne:
         display.fill((146,244,255))
 
-        trueScroll[0] += (playerHB.x-trueScroll[0]-152)/20
-        trueScroll[1] += (playerHB.y-trueScroll[1]-106)/20
+        trueScroll[0] += (playerHB.x-trueScroll[0]-260)/20
+        trueScroll[1] += (playerHB.y-trueScroll[1]-157)/20
         scroll = trueScroll.copy()
         scroll[0] = int(scroll[0])
         scroll[1] = int(scroll[1])
@@ -430,13 +432,13 @@ def mainMenu():
     click = False
     while True:
         windowBase.fill((146,244,255))
-        drawText('Main Menu',font20,(255,255,255),windowBase,20,20)
+        drawText('Main Menu',font100,(255,255,255),windowBase,20,20)
 
         mx,my = pygame.mouse.get_pos()
 
-        b1 = pygame.Rect(50,100,200,50)
-        b2 = pygame.Rect(50,200,200,50)
-        b3 = pygame.Rect(50,300,200,50)
+        b1 = pygame.Rect(150,175,800,100)
+        b2 = pygame.Rect(150,325,800,100)
+        b3 = pygame.Rect(150,475,800,100)
         if b1.collidepoint((mx,my)):
             if click:
                 lOne(True)
@@ -447,8 +449,11 @@ def mainMenu():
             if click:
                 lThree(True)
         pygame.draw.rect(windowBase,(255,255,255),b1)
+        drawText('Level One',font75,(146,244,255),windowBase,400,200)
         pygame.draw.rect(windowBase,(255,255,255),b2)
+        drawText('Level Two',font75,(146,244,255),windowBase,405,350)
         pygame.draw.rect(windowBase,(255,255,255),b3)
+        drawText('Level Three',font75,(146,244,255),windowBase,385,500)
 
         click = False
         for event in pygame.event.get():
@@ -466,12 +471,12 @@ def inGameMenu(igMenu):
     igClick = False
     while igMenu:
         windowBase.fill((146,244,255))
-        drawText('Main Menu',font20,(255,255,255),windowBase,20,20)
+        drawText('Main Menu',font100,(255,255,255),windowBase,20,20)
 
         mx,my = pygame.mouse.get_pos()
 
-        b1 = pygame.Rect(50,100,200,50)
-        b2 = pygame.Rect(50,200,200,50)
+        b1 = pygame.Rect(150,175,800,100)
+        b2 = pygame.Rect(150,325,800,100)
         if b1.collidepoint((mx,my)):
             if igClick:
                 igMenu = False
@@ -479,7 +484,9 @@ def inGameMenu(igMenu):
             if igClick:
                 mainMenu()
         pygame.draw.rect(windowBase,(255,255,255),b1)
+        drawText('Back',font75,(146,244,255),windowBase,485,200)
         pygame.draw.rect(windowBase,(255,255,255),b2)
+        drawText('Menu',font75,(146,244,255),windowBase,475,350)
 
         igClick = False
         for event in pygame.event.get():
