@@ -176,7 +176,7 @@ def lOne(levelOne):
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    levelOne = False
+                    inGameMenu(True)
                 if event.key == K_d:
                     movingRight = True
                 if event.key == K_a:
@@ -292,7 +292,7 @@ def lTwo(levelTwo):
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    levelTwo = False
+                    inGameMenu(True)
                 if event.key == K_d:
                     movingRight = True
                 if event.key == K_a:
@@ -408,7 +408,7 @@ def lThree(levelThree):
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    levelThree = False
+                    inGameMenu(True)
                 if event.key == K_d:
                     movingRight = True
                 if event.key == K_a:
@@ -427,6 +427,7 @@ def lThree(levelThree):
         gameFrameCount.tick(60)
 
 def mainMenu():
+    click = False
     while True:
         windowBase.fill((146,244,255))
         drawText('Main Menu',font20,(255,255,255),windowBase,20,20)
@@ -457,6 +458,40 @@ def mainMenu():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+
+        pygame.display.update()
+        gameFrameCount.tick(60)
+
+def inGameMenu(igMenu):
+    igClick = False
+    while igMenu:
+        windowBase.fill((146,244,255))
+        drawText('Main Menu',font20,(255,255,255),windowBase,20,20)
+
+        mx,my = pygame.mouse.get_pos()
+
+        b1 = pygame.Rect(50,100,200,50)
+        b2 = pygame.Rect(50,200,200,50)
+        if b1.collidepoint((mx,my)):
+            if igClick:
+                igMenu = False
+        if b2.collidepoint((mx,my)):
+            if igClick:
+                mainMenu()
+        pygame.draw.rect(windowBase,(255,255,255),b1)
+        pygame.draw.rect(windowBase,(255,255,255),b2)
+
+        igClick = False
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    levelThree = False
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    igClick = True
 
         pygame.display.update()
         gameFrameCount.tick(60)
