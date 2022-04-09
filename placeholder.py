@@ -102,7 +102,41 @@ def lOne(levelOne):
     grassImg = pygame.image.load('images/grass1.png')
     dirtImg = pygame.image.load('images/dirt1.png')
     tileSize = grassImg.get_width()
-    backgroundObjects = [[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.5,[280,90,100,400]],[0.5,[450,80,120,400]]]
+    backgroundObjects = [[0.25,[150,randint(20,150),randint(50,150),700]],
+                        [0.25,[300,randint(20,150),randint(50,150),700]],
+                        [0.25,[450,randint(20,150),randint(50,150),700]],
+                        [0.25,[600,randint(20,150),randint(50,150),700]],
+                        [0.25,[750,randint(20,150),randint(50,150),700]],
+                        [0.25,[900,randint(20,150),randint(50,150),700]],
+                        [0.25,[1050,randint(20,150),randint(50,150),700]],
+                        [0.25,[1250,randint(20,150),randint(50,150),700]],
+                        [0.25,[1350,randint(20,150),randint(50,150),700]],
+                        [0.5,[250,randint(80,250),randint(40,100),550]],
+                        [0.5,[450,randint(80,250),randint(40,100),550]],
+                        [0.5,[650,randint(80,250),randint(40,100),550]],
+                        [0.5,[850,randint(80,250),randint(40,100),550]],
+                        [0.5,[1050,randint(80,250),randint(40,100),550]],
+                        [0.5,[1250,randint(80,250),randint(40,100),550]],
+                        [0.75,[200,randint(250,450),randint(20,80),700]],
+                        [0.75,[300,randint(250,450),randint(20,80),700]],
+                        [0.75,[400,randint(250,450),randint(20,80),700]],
+                        [0.75,[500,randint(250,450),randint(20,80),700]],
+                        [0.75,[600,randint(250,450),randint(20,80),700]],
+                        [0.75,[700,randint(250,450),randint(20,80),700]],
+                        [0.75,[800,randint(250,450),randint(20,80),700]],
+                        [0.75,[900,randint(250,450),randint(20,80),700]],
+                        [0.75,[1000,randint(250,450),randint(20,80),700]],
+                        [0.75,[1100,randint(250,450),randint(20,80),700]],
+                        [0.75,[1200,randint(250,450),randint(20,80),700]],
+                        [0.75,[1300,randint(250,450),randint(20,80),700]],
+                        [0.75,[1400,randint(250,450),randint(20,80),700]],
+                        [0.75,[1500,randint(250,450),randint(20,80),700]],
+                        [0.75,[1600,randint(250,450),randint(20,80),700]],
+                        [0.75,[1700,randint(250,450),randint(20,80),700]],
+                        [0.75,[1800,randint(250,450),randint(20,80),700]],
+                        [0.75,[1900,randint(250,450),randint(20,80),700]],
+                        [0.75,[2000,randint(250,450),randint(20,80),700]],
+                        [0.75,[2100,randint(250,450),randint(20,80),700]],]
 
     playerHB = pygame.Rect(300,160,17,36)
 
@@ -120,8 +154,10 @@ def lOne(levelOne):
             objRect = pygame.Rect(backgroundObject[1][0]-scroll[0]*backgroundObject[0],backgroundObject[1][1]-scroll[1]*backgroundObject[0],backgroundObject[1][2],backgroundObject[1][3])
             if backgroundObject[0] == 0.5:
                 pygame.draw.rect(display,(14,222,150),objRect)
-            else:
+            elif backgroundObject[0] == 0.25:
                 pygame.draw.rect(display,(9,91,85),objRect)
+            elif backgroundObject[0] == 0.75:
+                pygame.draw.rect(display,(24,217,162),objRect)
 
         tileRects = []
         y = 0
@@ -218,15 +254,49 @@ def lTwo(levelTwo):
     grassImg = pygame.image.load('images/grass1.png')
     dirtImg = pygame.image.load('images/dirt1.png')
     tileSize = grassImg.get_width()
-    backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
+    backgroundObjects = [[0.25,[150,randint(20,150),randint(50,150),700]],
+                        [0.25,[300,randint(20,150),randint(50,150),700]],
+                        [0.25,[450,randint(20,150),randint(50,150),700]],
+                        [0.25,[600,randint(20,150),randint(50,150),700]],
+                        [0.25,[750,randint(20,150),randint(50,150),700]],
+                        [0.25,[900,randint(20,150),randint(50,150),700]],
+                        [0.25,[1050,randint(20,150),randint(50,150),700]],
+                        [0.25,[1250,randint(20,150),randint(50,150),700]],
+                        [0.25,[1350,randint(20,150),randint(50,150),700]],
+                        [0.5,[250,randint(80,250),randint(40,100),550]],
+                        [0.5,[450,randint(80,250),randint(40,100),550]],
+                        [0.5,[650,randint(80,250),randint(40,100),550]],
+                        [0.5,[850,randint(80,250),randint(40,100),550]],
+                        [0.5,[1050,randint(80,250),randint(40,100),550]],
+                        [0.5,[1250,randint(80,250),randint(40,100),550]],
+                        [0.75,[200,randint(250,450),randint(20,80),700]],
+                        [0.75,[300,randint(250,450),randint(20,80),700]],
+                        [0.75,[400,randint(250,450),randint(20,80),700]],
+                        [0.75,[500,randint(250,450),randint(20,80),700]],
+                        [0.75,[600,randint(250,450),randint(20,80),700]],
+                        [0.75,[700,randint(250,450),randint(20,80),700]],
+                        [0.75,[800,randint(250,450),randint(20,80),700]],
+                        [0.75,[900,randint(250,450),randint(20,80),700]],
+                        [0.75,[1000,randint(250,450),randint(20,80),700]],
+                        [0.75,[1100,randint(250,450),randint(20,80),700]],
+                        [0.75,[1200,randint(250,450),randint(20,80),700]],
+                        [0.75,[1300,randint(250,450),randint(20,80),700]],
+                        [0.75,[1400,randint(250,450),randint(20,80),700]],
+                        [0.75,[1500,randint(250,450),randint(20,80),700]],
+                        [0.75,[1600,randint(250,450),randint(20,80),700]],
+                        [0.75,[1700,randint(250,450),randint(20,80),700]],
+                        [0.75,[1800,randint(250,450),randint(20,80),700]],
+                        [0.75,[1900,randint(250,450),randint(20,80),700]],
+                        [0.75,[2000,randint(250,450),randint(20,80),700]],
+                        [0.75,[2100,randint(250,450),randint(20,80),700]],]
 
-    playerHB = pygame.Rect(200,50,17,36)
+    playerHB = pygame.Rect(300,160,17,36)
 
     while levelTwo:
         display.fill((146,244,255))
 
-        trueScroll[0] += (playerHB.x-trueScroll[0]-152)/20
-        trueScroll[1] += (playerHB.y-trueScroll[1]-106)/20
+        trueScroll[0] += (playerHB.x-trueScroll[0]-260)/20
+        trueScroll[1] += (playerHB.y-trueScroll[1]-157)/20
         scroll = trueScroll.copy()
         scroll[0] = int(scroll[0])
         scroll[1] = int(scroll[1])
@@ -236,8 +306,10 @@ def lTwo(levelTwo):
             objRect = pygame.Rect(backgroundObject[1][0]-scroll[0]*backgroundObject[0],backgroundObject[1][1]-scroll[1]*backgroundObject[0],backgroundObject[1][2],backgroundObject[1][3])
             if backgroundObject[0] == 0.5:
                 pygame.draw.rect(display,(14,222,150),objRect)
-            else:
+            elif backgroundObject[0] == 0.25:
                 pygame.draw.rect(display,(9,91,85),objRect)
+            elif backgroundObject[0] == 0.75:
+                pygame.draw.rect(display,(24,217,162),objRect)
 
         tileRects = []
         y = 0
@@ -330,19 +402,53 @@ def lThree(levelThree):
     playerFrame = 0
     playerFlip = False
 
-    gameMap = loadMap('maps/map2')
+    gameMap = loadMap('maps/map3')
     grassImg = pygame.image.load('images/grass1.png')
     dirtImg = pygame.image.load('images/dirt1.png')
     tileSize = grassImg.get_width()
-    backgroundObjects = [[0.25,[120,10,70,400]],[0.25,[280,30,40,400]],[0.5,[30,40,40,400]],[0.5,[130,90,100,400]],[0.5,[300,80,120,400]]]
+    backgroundObjects = [[0.25,[150,randint(20,150),randint(50,150),700]],
+                        [0.25,[300,randint(20,150),randint(50,150),700]],
+                        [0.25,[450,randint(20,150),randint(50,150),700]],
+                        [0.25,[600,randint(20,150),randint(50,150),700]],
+                        [0.25,[750,randint(20,150),randint(50,150),700]],
+                        [0.25,[900,randint(20,150),randint(50,150),700]],
+                        [0.25,[1050,randint(20,150),randint(50,150),700]],
+                        [0.25,[1250,randint(20,150),randint(50,150),700]],
+                        [0.25,[1350,randint(20,150),randint(50,150),700]],
+                        [0.5,[250,randint(80,250),randint(40,100),550]],
+                        [0.5,[450,randint(80,250),randint(40,100),550]],
+                        [0.5,[650,randint(80,250),randint(40,100),550]],
+                        [0.5,[850,randint(80,250),randint(40,100),550]],
+                        [0.5,[1050,randint(80,250),randint(40,100),550]],
+                        [0.5,[1250,randint(80,250),randint(40,100),550]],
+                        [0.75,[200,randint(250,450),randint(20,80),700]],
+                        [0.75,[300,randint(250,450),randint(20,80),700]],
+                        [0.75,[400,randint(250,450),randint(20,80),700]],
+                        [0.75,[500,randint(250,450),randint(20,80),700]],
+                        [0.75,[600,randint(250,450),randint(20,80),700]],
+                        [0.75,[700,randint(250,450),randint(20,80),700]],
+                        [0.75,[800,randint(250,450),randint(20,80),700]],
+                        [0.75,[900,randint(250,450),randint(20,80),700]],
+                        [0.75,[1000,randint(250,450),randint(20,80),700]],
+                        [0.75,[1100,randint(250,450),randint(20,80),700]],
+                        [0.75,[1200,randint(250,450),randint(20,80),700]],
+                        [0.75,[1300,randint(250,450),randint(20,80),700]],
+                        [0.75,[1400,randint(250,450),randint(20,80),700]],
+                        [0.75,[1500,randint(250,450),randint(20,80),700]],
+                        [0.75,[1600,randint(250,450),randint(20,80),700]],
+                        [0.75,[1700,randint(250,450),randint(20,80),700]],
+                        [0.75,[1800,randint(250,450),randint(20,80),700]],
+                        [0.75,[1900,randint(250,450),randint(20,80),700]],
+                        [0.75,[2000,randint(250,450),randint(20,80),700]],
+                        [0.75,[2100,randint(250,450),randint(20,80),700]],]
 
-    playerHB = pygame.Rect(200,50,17,36)
+    playerHB = pygame.Rect(300,160,17,36)
 
     while levelThree:
         display.fill((146,244,255))
 
-        trueScroll[0] += (playerHB.x-trueScroll[0]-152)/20
-        trueScroll[1] += (playerHB.y-trueScroll[1]-106)/20
+        trueScroll[0] += (playerHB.x-trueScroll[0]-260)/20
+        trueScroll[1] += (playerHB.y-trueScroll[1]-157)/20
         scroll = trueScroll.copy()
         scroll[0] = int(scroll[0])
         scroll[1] = int(scroll[1])
@@ -352,8 +458,10 @@ def lThree(levelThree):
             objRect = pygame.Rect(backgroundObject[1][0]-scroll[0]*backgroundObject[0],backgroundObject[1][1]-scroll[1]*backgroundObject[0],backgroundObject[1][2],backgroundObject[1][3])
             if backgroundObject[0] == 0.5:
                 pygame.draw.rect(display,(14,222,150),objRect)
-            else:
+            elif backgroundObject[0] == 0.25:
                 pygame.draw.rect(display,(9,91,85),objRect)
+            elif backgroundObject[0] == 0.75:
+                pygame.draw.rect(display,(24,217,162),objRect)
 
         tileRects = []
         y = 0
