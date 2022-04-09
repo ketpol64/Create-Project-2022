@@ -104,7 +104,7 @@ def lOne(levelOne):
     tileSize = grassImg.get_width()
     backgroundObjects = [[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[300,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.25,[150,randint(20,350),randint(30,100),700]],[0.5,[280,90,100,400]],[0.5,[450,80,120,400]]]
 
-    playerHB = pygame.Rect(200,160,17,36)
+    playerHB = pygame.Rect(300,160,17,36)
 
     while levelOne:
         display.fill((146,244,255))
