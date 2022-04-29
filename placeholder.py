@@ -13,6 +13,8 @@ windowBase = pygame.display.set_mode(windowSize,0,32)
 font100 = pygame.font.SysFont(None,100)
 font75 = pygame.font.SysFont(None,80)
 
+# Some of the code for the functions was inspired by DaFluffyPotato, as I learned some of these basic things like collisions and animations from him.
+
 def drawText(text,font,color,surface,x,y):
     textObj = font.render(text,1,color)
     textRect = textObj.get_rect()
